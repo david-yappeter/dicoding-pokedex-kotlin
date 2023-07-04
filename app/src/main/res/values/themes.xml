@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="Theme.DicodingPokedex" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- FullScreen -->
+        <item name="android:windowFullscreen">true</item>
 
-    <style name="Theme.DicodingPokedex" parent="android:Theme.Material.Light.DarkActionBar" />
+        <!--Primary brand color-->
+        <item name="colorPrimary">@color/poke_red</item>
+
+
+        <!--Secondary brand color-->
+    </style>
 </resources>
