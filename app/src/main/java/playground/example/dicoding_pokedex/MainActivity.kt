@@ -8,11 +8,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.ActionBarDrawerToggle
+import playground.example.dicoding_pokedex.component.DrawerActivity
 import playground.example.dicoding_pokedex.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : DrawerActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         DownloadImageFromInternet(binding.testImage).execute("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png")
     }
+
 
     private inner class DownloadImageFromInternet(var imageView: ImageView): AsyncTask<String, Void, Bitmap?>() {
         init {

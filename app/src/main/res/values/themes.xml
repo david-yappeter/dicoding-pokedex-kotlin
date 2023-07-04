@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="Theme.DicodingPokedex" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- FullScreen -->
         <item name="android:windowFullscreen">true</item>
@@ -10,4 +11,13 @@
 
         <!--Secondary brand color-->
     </style>
+
+    <style name="Theme.DicodingPokedex.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.DicodingPokedex.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.DicodingPokedex.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

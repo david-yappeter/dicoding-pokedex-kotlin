@@ -1,13 +1,17 @@
 package playground.example.dicoding_pokedex
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
+import playground.example.dicoding_pokedex.component.DrawerActivity
+import playground.example.dicoding_pokedex.databinding.ActivityAboutBinding
 
 class AboutActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAboutBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_about)
+        binding = ActivityAboutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val actionbar = supportActionBar
         actionbar!!.setDisplayHomeAsUpEnabled(true)
