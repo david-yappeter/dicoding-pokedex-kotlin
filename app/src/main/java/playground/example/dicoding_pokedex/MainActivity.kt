@@ -32,7 +32,7 @@ class MainActivity : DrawerActivity() {
 
         binding.rvPokemon.setHasFixedSize(true)
         binding.rvPokemon.setItemViewCacheSize(20)
-        binding.rvPokemon.layoutManager = GridLayoutManager(this, 2)
+        handleOrientation(this.resources.configuration.orientation)
 
         NetworkConfig().getService()
             .getPokemons()
@@ -60,10 +60,18 @@ class MainActivity : DrawerActivity() {
         super.onConfigurationChanged(newConfig)
 
         // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            binding.rvPokemon.layoutManager = GridLayoutManager(this, 4)
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            binding.rvPokemon.layoutManager = GridLayoutManager(this, 2)
+        handleOrientation(newConfig.orientation.toInt())
+    }
+
+    private fun handleOrientation(orientation: Int) {
+        when(orientation) {
+            Configuration.ORIENTATION_LANDSCAPE -> {
+                binding.rvPokemon.layoutManager = GridLayoutManager(this, 4)
+            }
+            Configuration.ORIENTATION_PORTRAIT -> {
+                binding.rvPokemon.layoutManager = GridLayoutManager(this, 2)
+            }
+            else -> {}
         }
     }
 

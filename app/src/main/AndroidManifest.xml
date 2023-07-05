@@ -15,6 +15,17 @@
         android:theme="@style/Theme.DicodingPokedex"
         tools:targetApi="31">
         <activity
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:label="@string/title_activity_splash_screen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".component.DrawerActivity"
             android:exported="false"
             android:label="@string/title_activity_drawer"
@@ -26,15 +37,10 @@
             android:theme="@style/Theme.DicodingPokedex" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
             android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:label="@string/app_name"
             android:theme="@style/Theme.DicodingPokedex">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
