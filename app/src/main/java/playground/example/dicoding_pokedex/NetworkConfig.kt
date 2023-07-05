@@ -2,12 +2,14 @@ package playground.example.dicoding_pokedex
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import playground.example.dicoding_pokedex.data.ResultPokemon
 import playground.example.dicoding_pokedex.data.ResultPokemonList
 import playground.example.dicoding_pokedex.model.Pokemon
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 class NetworkConfig {
     // set interceptor
@@ -31,4 +33,7 @@ class NetworkConfig {
 interface Pokemons {
     @GET("api/v2/pokemon")
     fun getPokemons(): Call<ResultPokemonList>
+
+    @GET("api/v2/pokemon/{id}")
+    fun getPokemon(@Path("id") id: Int): Call<ResultPokemon>
 }

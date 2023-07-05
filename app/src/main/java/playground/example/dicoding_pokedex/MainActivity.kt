@@ -1,6 +1,5 @@
 package playground.example.dicoding_pokedex
 
-import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -47,13 +46,6 @@ class MainActivity : DrawerActivity() {
                     binding.rvPokemon.adapter = PokemonsAdapter(response.body())
                 }
             })
-
-//        binding.btnIntent.setOnClickListener {
-//            val intent = Intent(this, AboutActivity::class.java)
-//            startActivity(intent)
-//        }
-
-//        DownloadImageFromInternet(binding.testImage).execute("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png")
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
