@@ -1,205 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sv_root"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/ll_1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.cardview.widget.CardView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:cardCornerRadius="20dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:paddingBottom="40dp">
+
+        <LinearLayout
+            android:id="@+id/ll_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
             <ImageView
                 android:id="@+id/pokemon_image"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:scaleType="fitXY"
                 android:contentDescription="@string/pokemon_image"
-                tools:src="@tools:sample/avatars"/>
-        </androidx.cardview.widget.CardView>
+                android:scaleType="fitCenter"
+                android:background="@drawable/rounded_bottom_corners_background"
+                tools:src="@tools:sample/avatars" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_type"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center">
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/pokemon_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="16dp"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ll_type"
+                    android:textColor="@color/black"
+                    tools:text="Bulbasaur" />
+
+                <TextView
+                    android:id="@+id/pokemon_base_xp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/pokemon_name"
+                    app:layout_constraintStart_toStartOf="@id/pokemon_base_xp_label"
+                    app:layout_constraintEnd_toEndOf="@id/pokemon_base_xp_label"
+                    android:layout_marginStart="8dp"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:text="64" />
+
+                <TextView
+                    android:id="@+id/pokemon_base_xp_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/pokemon_base_xp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/pokemon_height_label"
+                    android:text="@string/base_xp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/pokemon_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/pokemon_name"
+                    app:layout_constraintStart_toEndOf="@id/pokemon_height_label"
+                    app:layout_constraintEnd_toStartOf="@id/pokemon_height_label"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:text="7" />
+
+                <TextView
+                    android:id="@+id/pokemon_height_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/pokemon_base_xp_label"
+                    app:layout_constraintEnd_toStartOf="@id/pokemon_weight_label"
+                    app:layout_constraintTop_toBottomOf="@id/pokemon_height"
+                    android:text="@string/height"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/pokemon_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/pokemon_name"
+                    app:layout_constraintStart_toStartOf="@id/pokemon_weight_label"
+                    app:layout_constraintEnd_toEndOf="@id/pokemon_weight_label"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    tools:text="69" />
+
+                <TextView
+                    android:id="@+id/pokemon_weight_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/pokemon_height_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/pokemon_weight"
+                    android:text="@string/weight"
+                    android:textSize="18sp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
+            app:layout_constraintTop_toBottomOf="@id/ll_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="20dp">
             <TextView
-                android:id="@+id/pokemon_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/tv_stats_label"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Bulbasaur" />
-
-            <TableLayout
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/base_stats"/>
+            <LinearLayout
+                android:id="@+id/ll_stats"
+                app:layout_constraintTop_toBottomOf="@+id/tv_stats_label"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pokemon_name">
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_abilities_label"
+                app:layout_constraintTop_toBottomOf="@+id/ll_stats"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="@string/abilities"/>
+            <TableLayout
+                app:layout_constraintTop_toBottomOf="@+id/tv_abilities_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/base_xp"
-                        android:textSize="18sp"/>
+                        android:id="@+id/ability_1"
+                        android:layout_weight="1"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:background="@drawable/border"
+                        android:text="-"
+                        tools:text="Scratch" />
                     <TextView
-                        android:layout_marginStart="2dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:text="@string/double_colon"/>
-
-                    <TextView
-                        android:id="@+id/pokemon_base_xp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:textSize="18sp"
-                        tools:text="64" />
+                        android:id="@+id/ability_2"
+                        android:layout_weight="1"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:background="@drawable/border"
+                        android:text="-"
+                        tools:text="-" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/height"
-                        android:textSize="18sp"/>
+                        android:id="@+id/ability_3"
+                        android:layout_weight="1"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:background="@drawable/border"
+                        android:text="-"
+                        tools:text="-" />
                     <TextView
-                        android:layout_marginStart="2dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:text="@string/double_colon"/>
-                    <TextView
-                        android:id="@+id/pokemon_height"
-                        android:layout_marginStart="8dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        tools:text="7"/>
+                        android:id="@+id/ability_4"
+                        android:layout_weight="1"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:background="@drawable/border"
+                        android:text="-"
+                        tools:text="-" />
                 </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/weight"
-                        android:textSize="18sp"/>
-                    <TextView
-                        android:layout_marginStart="2dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:text="@string/double_colon"/>
-                    <TextView
-                        android:id="@+id/pokemon_weight"
-                        android:layout_marginStart="8dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        tools:text="69"/>
-                </TableRow>
-
             </TableLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/tv_stats_label"
-        app:layout_constraintTop_toBottomOf="@+id/ll_1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="@string/base_stats"/>
-    <LinearLayout
-        android:id="@+id/ll_stats"
-        app:layout_constraintTop_toBottomOf="@+id/tv_stats_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
-    <TextView
-        android:id="@+id/tv_abilities_label"
-        app:layout_constraintTop_toBottomOf="@+id/ll_stats"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="@string/abilities"/>
-    <TableLayout
-        app:layout_constraintTop_toBottomOf="@+id/tv_abilities_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:layout_weight="1"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="4dp"
-                android:background="@drawable/border"
-                tools:text="Scratch" />
-            <TextView
-                android:layout_weight="1"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="4dp"
-                android:background="@drawable/border"
-                tools:text="-" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:layout_weight="1"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="4dp"
-                android:background="@drawable/border"
-                tools:text="-" />
-            <TextView
-                android:layout_weight="1"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="4dp"
-                android:background="@drawable/border"
-                tools:text="-" />
-        </TableRow>
-    </TableLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

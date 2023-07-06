@@ -29,4 +29,5 @@
     <string name="moves">Moves</string>
     <string name="abilities">Abilities</string>
     <string name="base_stats">Base Stats</string>
+    <string name="type">type</string>
 </resources>

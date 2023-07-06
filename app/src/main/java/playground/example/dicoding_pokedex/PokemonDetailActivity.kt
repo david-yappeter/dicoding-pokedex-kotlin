@@ -1,8 +1,13 @@
 package playground.example.dicoding_pokedex
 
+import android.app.ProgressDialog
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +17,10 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
+import koleton.api.hideSkeleton
+import koleton.api.loadSkeleton
 import playground.example.dicoding_pokedex.data.ResultPokemon
 import playground.example.dicoding_pokedex.databinding.ActivityMainBinding
 import playground.example.dicoding_pokedex.databinding.ActivityPokemonDetailBinding
@@ -39,6 +48,9 @@ class PokemonDetailActivity : AppCompatActivity() {
         val actionbar = supportActionBar
         actionbar!!.title = "Pokemon"
         actionbar!!.setDisplayHomeAsUpEnabled(true)
+        actionbar!!.elevation = 0.toFloat()
+
+        binding.svRoot.loadSkeleton()
 
         NetworkConfig().getService()
             .getPokemon(id!!)
@@ -75,21 +87,87 @@ class PokemonDetailActivity : AppCompatActivity() {
 
                     DownloadImageFromInternet(binding.pokemonImage).execute(pokemon.sprite_url)
 
-                    binding.pokemonImage.setBackgroundColor(pokemon.types[0].relatedColor())
+                    actionbar.setBackgroundDrawable(ColorDrawable(pokemon.types[0].relatedColor()))
+
+                    val backgroundDrawable = binding.pokemonImage.background
+                    if(backgroundDrawable is GradientDrawable) {
+                        val gradientDrawable = backgroundDrawable as GradientDrawable
+                        gradientDrawable.setColor(pokemon.types[0].relatedColor())
+                        binding.pokemonImage.background = gradientDrawable
+                    }
+                    
                     binding.pokemonName.text = pokemon.name
                     binding.pokemonBaseXp.text = pokemon.base_xp.toString()
                     binding.pokemonHeight.text = pokemon.height.toString()
                     binding.pokemonWeight.text = pokemon.weight.toString()
 
+                    pokemon.types.forEach {
+                        val typeView = layoutInflater.inflate(R.layout.pokemon_type_icon, null) as ImageView
+
+                        typeView.setImageResource(
+                            when(it) {
+                                PokemonType.NORMAL -> R.drawable.normal
+                                PokemonType.FIRE -> R.drawable.fire
+                                PokemonType.WATER -> R.drawable.water
+                                PokemonType.ELECTRIC -> R.drawable.electric
+                                PokemonType.GRASS -> R.drawable.grass
+                                PokemonType.ICE -> R.drawable.ice
+                                PokemonType.FIGHTING -> R.drawable.fighting
+                                PokemonType.POISON -> R.drawable.poison
+                                PokemonType.GROUND -> R.drawable.ground
+                                PokemonType.FLYING -> R.drawable.flying
+                                PokemonType.PSYCHIC -> R.drawable.psychic
+                                PokemonType.BUG -> R.drawable.bug
+                                PokemonType.ROCK -> R.drawable.rock
+                                PokemonType.GHOST -> R.drawable.ghost
+                                PokemonType.DRAGON -> R.drawable.dragon
+                                PokemonType.DARK -> R.drawable.dark
+                                PokemonType.STEEL -> R.drawable.steel
+                                PokemonType.FAIRY -> R.drawable.fairy
+                                else -> R.drawable.unknown
+                            }
+                        )
+
+                        binding.llType.addView(typeView)
+                    }
+
                     pokemon.stats.forEach{
                         val statView = layoutInflater.inflate(R.layout.pokemon_stat, null) as LinearLayout
+                        val progressBar = statView.findViewById<ProgressBar>(R.id.stat_progress)
 
                         statView.findViewById<TextView>(R.id.stat_label).text = it.nameLabel!!
-                        statView.findViewById<ProgressBar>(R.id.stat_progress).max = 255
-                        statView.findViewById<ProgressBar>(R.id.stat_progress).progress = it.base_stat
+                        progressBar.max = 255
+                        progressBar.progressBackgroundTintList = ColorStateList.valueOf(it.relatedColor)
+                        progressBar.progressTintList = ColorStateList.valueOf(it.relatedColor)
+                        progressBar.progress = it.base_stat
 
                         binding.llStats.addView(statView)
                     }
+
+                    var idx = 1
+                    pokemon.abilities.forEach {
+                        when(idx) {
+                            1-> {
+                                binding.ability1.text = it.name!!
+                                idx++
+                            }
+                            2-> {
+                                binding.ability2.text = it.name!!
+                                idx++
+                            }
+                            3-> {
+                                binding.ability3.text = it.name!!
+                                idx++
+                            }
+                            4-> {
+                                binding.ability4.text = it.name!!
+                                idx++
+                            }
+                            else -> {}
+                        }
+                    }
+
+                    binding.svRoot.hideSkeleton()
                 }
             })
     }
