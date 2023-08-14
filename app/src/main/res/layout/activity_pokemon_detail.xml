@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/sv_root"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sv_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -187,20 +187,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
-                        android:id="@+id/ability_1"
+                        android:id="@+id/ability1"
                         android:layout_weight="1"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="4dp"
                         android:background="@drawable/border"
-                        android:text="-"
                         tools:text="Scratch" />
                     <TextView
-                        android:id="@+id/ability_2"
+                        android:id="@+id/ability2"
                         android:layout_weight="1"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="4dp"
                         android:background="@drawable/border"
-                        android:text="-"
                         tools:text="-" />
                 </TableRow>
 
@@ -208,20 +206,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
-                        android:id="@+id/ability_3"
+                        android:id="@+id/ability3"
                         android:layout_weight="1"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="4dp"
                         android:background="@drawable/border"
-                        android:text="-"
                         tools:text="-" />
                     <TextView
-                        android:id="@+id/ability_4"
+                        android:id="@+id/ability4"
                         android:layout_weight="1"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="4dp"
                         android:background="@drawable/border"
-                        android:text="-"
                         tools:text="-" />
                 </TableRow>
             </TableLayout>

@@ -2,9 +2,7 @@ package playground.example.dicoding_pokedex.model
 
 import android.graphics.Color
 import android.os.Parcelable
-import androidx.compose.ui.text.toLowerCase
 import kotlinx.parcelize.Parcelize
-import java.lang.IllegalArgumentException
 
 @Parcelize
 data class Pokemon(

@@ -1,28 +1,22 @@
 package playground.example.dicoding_pokedex
 
-import android.app.ProgressDialog
 import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.LayerDrawable
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.widget.ImageViewCompat
 import koleton.api.hideSkeleton
 import koleton.api.loadSkeleton
 import playground.example.dicoding_pokedex.data.ResultPokemon
-import playground.example.dicoding_pokedex.databinding.ActivityMainBinding
 import playground.example.dicoding_pokedex.databinding.ActivityPokemonDetailBinding
 import playground.example.dicoding_pokedex.model.Pokemon
 import playground.example.dicoding_pokedex.model.PokemonAbility
@@ -33,7 +27,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PokemonDetailActivity : AppCompatActivity() {
-    private var id: Int? = null;
+    private var id: Int? = null
 
     private lateinit var binding: ActivityPokemonDetailBinding
 
@@ -45,10 +39,10 @@ class PokemonDetailActivity : AppCompatActivity() {
 
         id = intent.getIntExtra("id", -1)
 
-        val actionbar = supportActionBar
-        actionbar!!.title = "Pokemon"
-        actionbar!!.setDisplayHomeAsUpEnabled(true)
-        actionbar!!.elevation = 0.toFloat()
+        val actionbar = supportActionBar!!
+        actionbar.title = "Pokemon"
+        actionbar.setDisplayHomeAsUpEnabled(true)
+        actionbar.elevation = 0.toFloat()
 
         binding.svRoot.loadSkeleton()
 
@@ -70,13 +64,13 @@ class PokemonDetailActivity : AppCompatActivity() {
                         weight = resp.weight!!,
                         base_xp = resp.baseExperience!!,
                         sprite_url= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png",
-                        abilities = ArrayList<PokemonAbility>(resp.abilities!!.map{
+                        abilities = ArrayList(resp.abilities!!.map{
                             PokemonAbility(
                             name = it?.ability?.name!!,
                             isHidden = it.isHidden!!,
                         )
                         }),
-                        stats = ArrayList<PokemonStats>(resp.stats!!.map{PokemonStats(
+                        stats = ArrayList(resp.stats!!.map{PokemonStats(
                             name = it?.stat?.name!!,
                             base_stat = it.baseStat!!.toInt(),
                             effort = it.effort!!.toInt(),
@@ -93,7 +87,7 @@ class PokemonDetailActivity : AppCompatActivity() {
                     if(backgroundDrawable is GradientDrawable) {
                         val gradientDrawable = backgroundDrawable as GradientDrawable
                         gradientDrawable.setColor(pokemon.types[0].relatedColor())
-                        binding.pokemonImage.background = gradientDrawable
+                    binding.pokemonImage.background = gradientDrawable
                     }
                     
                     binding.pokemonName.text = pokemon.name
@@ -102,7 +96,7 @@ class PokemonDetailActivity : AppCompatActivity() {
                     binding.pokemonWeight.text = pokemon.weight.toString()
 
                     pokemon.types.forEach {
-                        val typeView = layoutInflater.inflate(R.layout.pokemon_type_icon, null) as ImageView
+                        val typeView = View.inflate(this@PokemonDetailActivity, R.layout.pokemon_type_icon, null) as ImageView
 
                         typeView.setImageResource(
                             when(it) {
@@ -132,10 +126,10 @@ class PokemonDetailActivity : AppCompatActivity() {
                     }
 
                     pokemon.stats.forEach{
-                        val statView = layoutInflater.inflate(R.layout.pokemon_stat, null) as LinearLayout
+                        val statView = View.inflate(this@PokemonDetailActivity, R.layout.pokemon_stat, null) as LinearLayout
                         val progressBar = statView.findViewById<ProgressBar>(R.id.stat_progress)
 
-                        statView.findViewById<TextView>(R.id.stat_label).text = it.nameLabel!!
+                        statView.findViewById<TextView>(R.id.stat_label).text = it.nameLabel
                         progressBar.max = 255
                         progressBar.progressBackgroundTintList = ColorStateList.valueOf(it.relatedColor)
                         progressBar.progressTintList = ColorStateList.valueOf(it.relatedColor)
@@ -148,19 +142,19 @@ class PokemonDetailActivity : AppCompatActivity() {
                     pokemon.abilities.forEach {
                         when(idx) {
                             1-> {
-                                binding.ability1.text = it.name!!
+                                binding.ability1.text = it.name
                                 idx++
                             }
                             2-> {
-                                binding.ability2.text = it.name!!
+                                binding.ability2.text = it.name
                                 idx++
                             }
                             3-> {
-                                binding.ability3.text = it.name!!
+                                binding.ability3.text = it.name
                                 idx++
                             }
                             4-> {
-                                binding.ability4.text = it.name!!
+                                binding.ability4.text = it.name
                                 idx++
                             }
                             else -> {}

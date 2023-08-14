@@ -2,7 +2,6 @@ package playground.example.dicoding_pokedex
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import playground.example.dicoding_pokedex.component.DrawerActivity
 import playground.example.dicoding_pokedex.databinding.ActivityAboutBinding
 
 class AboutActivity : AppCompatActivity() {

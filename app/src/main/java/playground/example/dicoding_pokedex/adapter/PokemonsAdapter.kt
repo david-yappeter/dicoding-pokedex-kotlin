@@ -1,5 +1,6 @@
 package playground.example.dicoding_pokedex.adapter
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -17,7 +18,7 @@ import playground.example.dicoding_pokedex.R
 import playground.example.dicoding_pokedex.data.ResultPokemonList
 import playground.example.dicoding_pokedex.model.Pokemon
 
-class PokemonsAdapter() : RecyclerView.Adapter<PokemonsAdapter.MyHolder>() {
+class PokemonsAdapter : RecyclerView.Adapter<PokemonsAdapter.MyHolder>() {
     private val pokemonList: MutableList<Pokemon> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
@@ -31,9 +32,10 @@ class PokemonsAdapter() : RecyclerView.Adapter<PokemonsAdapter.MyHolder>() {
         holder.bind(pokemonList[position])
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addData(newPokemonList: ResultPokemonList?) {
         if(newPokemonList != null) {
-            pokemonList.addAll(newPokemonList?.results!!.map {
+            pokemonList.addAll(newPokemonList.results!!.map {
                 val id = it?.url?.removePrefix("https://pokeapi.co/api/v2/pokemon/")?.removeSuffix("/")!!
                 Pokemon(
                     id = id,
@@ -58,7 +60,7 @@ class PokemonsAdapter() : RecyclerView.Adapter<PokemonsAdapter.MyHolder>() {
             val id = pokemon.id.toInt()
 
             itemView.findViewById<TextView>(R.id.name).text = pokemon.name
-            DownloadImageFromInternet(itemView.findViewById<ImageView>(R.id.sprite)).execute("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png")
+            DownloadImageFromInternet(itemView.findViewById(R.id.sprite)).execute("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png")
 
             itemView.findViewById<CardView>(R.id.cv_container).setOnClickListener{
                 handleCardClick(id)

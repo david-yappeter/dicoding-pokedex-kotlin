@@ -1,3 +1,24 @@
+@file:Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused"
+)
+
 package playground.example.dicoding_pokedex.data
 
 import com.google.gson.annotations.SerializedName
@@ -251,6 +272,10 @@ data class FireredLeafgreen(
 	val frontShiny: String? = null
 )
 
+@Suppress("unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused", "unused",
+	"unused", "unused", "unused", "unused", "unused", "unused", "unused"
+)
 data class AbilitiesItem(
 
 	@field:SerializedName("is_hidden")

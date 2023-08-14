@@ -1,9 +1,6 @@
 package playground.example.dicoding_pokedex.component
 
 import android.content.Intent
-import android.util.Log
-import android.view.Gravity
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
@@ -11,7 +8,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.Navigation
 import com.google.android.material.navigation.NavigationView
 import playground.example.dicoding_pokedex.AboutActivity
 import playground.example.dicoding_pokedex.R
@@ -23,7 +19,7 @@ open class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItem
     private lateinit var mToggle : ActionBarDrawerToggle
 
     override fun setContentView(view: View) {
-        fullLayout = layoutInflater.inflate(R.layout.drawer_n_activity, null) as DrawerLayout
+        fullLayout = View.inflate(view.context, R.layout.drawer_n_activity, null) as DrawerLayout
         frameLayout = fullLayout.findViewById<View>(R.id.drawer_frame) as FrameLayout
 
         frameLayout.addView(view)
@@ -44,7 +40,7 @@ open class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         fullLayout.findViewById<NavigationView>(R.id.nav_view).setNavigationItemSelectedListener(this)
     }
 
-    override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return mToggle.onOptionsItemSelected(item)
     }
 

@@ -1,15 +1,8 @@
 package playground.example.dicoding_pokedex
 
 import android.content.res.Configuration
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import playground.example.dicoding_pokedex.adapter.PokemonsAdapter
@@ -19,7 +12,6 @@ import playground.example.dicoding_pokedex.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.net.URL
 import kotlin.math.ceil
 
 
@@ -87,7 +79,6 @@ class MainActivity : DrawerActivity() {
                         val pokemonList = response.body()
                         (binding.rvPokemon.adapter as? PokemonsAdapter)?.apply {
                             addData(pokemonList)
-                            notifyDataSetChanged()
                         }
 
                         isLastPage = currentPage >= ceil(pokemonList!!.count!!.toFloat() / limit).toInt()
@@ -103,7 +94,7 @@ class MainActivity : DrawerActivity() {
         super.onConfigurationChanged(newConfig)
 
         // Checks the orientation of the screen
-        handleOrientation(newConfig.orientation.toInt())
+        handleOrientation(newConfig.orientation)
     }
 
     private fun handleOrientation(orientation: Int) {
